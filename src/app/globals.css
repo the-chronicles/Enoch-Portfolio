@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+:root,
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --surface-paper: #0d0d0c;
+  --surface-elevated: #151513;
+  --text-primary: #f2efe9;
+  --text-secondary: #b5b0a6;
+  --text-muted: #7e7970;
+  --accent: #d94e34;
+  --border-hairline: rgba(242, 239, 233, 0.11);
+  --border-strong: rgba(242, 239, 233, 0.26);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --surface-paper: #f6f3ec;
+  --surface-elevated: #ede8df;
+  --text-primary: #141413;
+  --text-secondary: #3f3d39;
+  --text-muted: #6e6a63;
+  --accent: #c03d24;
+  --border-hairline: rgba(20, 20, 19, 0.12);
+  --border-strong: rgba(20, 20, 19, 0.28);
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background-color: var(--surface-paper);
+  color: var(--text-primary);
+  font-family: var(--font-satoshi), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+  text-align: start;
+  overflow-x: clip;
+}
+
+.font-editorial {
+  font-family: "Instrument Serif", "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+}
+
+.font-mono {
+  font-family: "JetBrains Mono", "SF Mono", "Fira Code", Menlo, Monaco, Consolas, monospace;
+}
+
+/* Targeted typographic wrapping per modern-web-guidance */
+h1,
+h2,
+h3,
+.hero-heading {
+  text-wrap: balance;
+}
+
+.pretty-copy {
+  text-wrap: pretty;
+  max-inline-size: 75ch;
+}
+
+/* Architectural Blueprint Grid Surface */
+.blueprint-surface {
+  background-color: var(--surface-paper);
+  background-image: radial-gradient(var(--border-strong) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+/* Accessible Focus Rings */
+:where(a:any-link, button, input, select, textarea):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Visually Hidden & Skip Link Utilities */
+.visually-hidden:where(:not(:focus-within, :active)) {
+  position: absolute !important;
+  clip-path: inset(50%) !important;
+  overflow: hidden !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+}
+
+.skip-link {
+  position: fixed;
+  inset-block-start: 0.75rem;
+  inset-inline-start: 0.75rem;
+  z-index: 100;
+  background-color: var(--accent);
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  font-family: monospace;
+  font-size: 0.75rem;
+}
+
+.skip-link:where(:not(:focus-visible)) {
+  position: absolute !important;
+  clip-path: inset(50%) !important;
+  overflow: hidden !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+}
